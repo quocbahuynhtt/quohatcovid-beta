@@ -13,12 +13,17 @@
     
     </style>
 <script type="text/javascript">
+
 function getLocation1() {
   if (navigator.geolocation) {
+    var loading = `<br/><center><div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+  <span class="sr-only">Loading...</span>
+</div></center>`;
+document.getElementById('result3').innerHTML = loading;
     navigator.geolocation.getCurrentPosition(getLocation);
     console.log("Bước 1: Định vị thành công!")
   } else { 
-    console.log("Trình duyệt không hỗ trợ ?");
+    alert("Bật định vị bạn eyyy !");
   }
 }
 
@@ -128,8 +133,8 @@ function getLocation(position) {
             addData();
             for (items of arrHere) {
                 var hihi = getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, items[1].lat, items[1].lng)
-                if (hihi < 10) {
-                    if (hihi < 3) {
+                if (hihi < 100) {
+                    if (hihi < 35) {
                         var tr = document.createElement('TR');
                         tr.innerHTML += '<td >' + hihi + 'km' + '</td><td>' + items[1].name + '</td><td>' + items[1].address + '</td><td>' + items[1].note + '</td>';
                         document.getElementsByClassName('table')[0].appendChild(tr);
@@ -150,10 +155,13 @@ function getLocation(position) {
                 document.getElementById('result1').remove();
                 addSafe();
                 console.log("Bước 3: Thành công!");
-                console.log("Quohat Team with love <3")
+                console.log("Quohat Team with love <3");
             } else {
+                document.getElementById('result3').remove();
                 document.getElementsByClassName("alert-link")[0].innerHTML = document.getElementsByTagName('table')[0].getElementsByTagName('tr').length - 1;
                 document.getElementsByClassName("alert-link")[1].innerHTML = document.getElementsByTagName('table')[1].getElementsByTagName('tr').length - 1;
+                console.log("Bước 3: Thành công!");
+                console.log("Quohat Team with love <3");
             }
 
 
@@ -173,7 +181,11 @@ function getLocation(position) {
 <body>
 <h1>Quohat Covid-19_zone</h1>
 <p>Nhấn nút để phát hiện các điểm nóng về Covid-19 đang ở gần bạn nhất | Nguồn dữ liệu: <a href="https://ncov.moh.gov.vn/">Bộ Y Tế</a></p>
-<div id="result1"></div>
+<div id="result1">
+   <div id="result3">
+    
+</div> 
+</div>
 <div id="result2" style="margin:0 auto;width:70%;"></div>
 <div id="result">
 <center><button onclick="getLocation1()">Nhấn nút <span class="material-icons">search</span></button></center>
