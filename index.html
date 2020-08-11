@@ -164,6 +164,18 @@ function getLocation(position) {
 			console.log("Bước 3: Thành công!");
 			console.log("Quohat Team with love <3");
 		}
+		var Check1 = Number(document.getElementsByClassName("alert-link")[0].innerText); 
+		     if(Check1 == 0){
+			document.getElementsByTagName('table')[0].remove();
+			document.getElementsByClassName('alert-danger')[0].remove();
+
+		     }else{
+			var Check2 = Number(document.getElementsByClassName("alert-link")[1].innerText); 
+			if(Check2 == 0){
+			document.getElementsByTagName('table')[1].remove();
+			document.getElementsByClassName('alert-warning')[0].remove();
+		    }
+		}
 	}).catch((err) => {
 		alert("Không nạp được dữ liệu. Tại thằng Nhật chứ không phải tại Quốc!");
 		console.log("Liên Hệ : Quohat Team");
