@@ -142,11 +142,11 @@ function getLocation(position) {
 				if (hihi <= 3) {
 					var tr = document.createElement('TR');
 					tr.innerHTML += '<td >' + hihi + 'km' + '</td><td>' + items[1].name + '</td><td>' + items[1].address + '</td><td>' + items[1].note + '</td>';
-					document.getElementsByClassName('table')[0].appendChild(tr);
+					document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0].appendChild(tr);
 				} else {
 					var tr1 = document.createElement('TR');
 					tr1.innerHTML += '<td >' + hihi + 'km' + '</td><td>' + items[1].name + '</td><td>' + items[1].address + '</td><td>' + items[1].note + '</td>';
-					document.getElementsByClassName('table')[1].appendChild(tr1);
+					document.getElementsByClassName('table')[1].getElementsByTagName('tbody')[0].appendChild(tr1);
 				}
 			}
 		}
